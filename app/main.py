@@ -1,9 +1,10 @@
 from services.usuario_service import UsuarioService
 from repositories.usuario_repository import UsuarioRepository
 from config.database import Session
-import os 
+import os
 
-def main(): 
+
+def main():
     session = Session()
     repository = UsuarioRepository(session)
     service = UsuarioService(repository)
@@ -16,11 +17,12 @@ def main():
 
     service.criar_usuario(nome=nome, email=email, senha=senha)
 
-    #Listar todos os usuarios cadastrados.
+    # Listar todos os usuarios cadastrados.
     print("\nListando usuários cadastrado.")
     lista_usuarios = service.listar_todos_usuarios()
     for usuario in lista_usuarios:
         print(f"Nome:{usuario.nome} - Email: {usuario.email} - Senha: {usuario.senha}")
+
 
 if __name__ == "__main__":
     os.system("cls || clear")
